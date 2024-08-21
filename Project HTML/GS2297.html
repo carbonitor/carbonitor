@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+
+    <!-- Mapbox CSS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <!-- Project Title and Info Section -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title text-uppercase">Project Ulubelu Unit 3 - 4 PT. Pertamina Geothermal Energy</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>GS ID:</strong> 2297</p>
+                    <p><strong>POA GS ID:</strong> -</p>
+                    <p><strong>Region:</strong> Indonesia</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Product:</strong> CER</p>
+                    <p><strong>Status:</strong> Certified</p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <p><strong>Planned SDG Impacts:</strong></p>
+                    <p><strong>Project Type:</strong> Geothermal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Details Section -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Project Developer:</strong> South Pole Carbon Asset Management Ltd.</p>
+                    <p><strong>Methodology:</strong> ACM0002 Grid-connected electricity from renewable sources</p>
+                    <p><strong>Standards Version:</strong> Gold Standard for the Global Goals</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Crediting Period:</strong> Jul 26, 2016 - Jul 25, 2023</p>
+                    <p><strong>Annual Estimated Credits:</strong> 290,892</p>
+                    <p><strong>Project Scale:</strong> Large Scale</p>
+                    <p><strong>Project Type:</strong> Geothermal</p>
+                </div>
+            </div>
+            <p><strong>Description:</strong> Ulubelu geothermal unit 3 & 4 (total 2 X 55 MW), generates electricity from geothermal energy and supplies electricity to grid.</p>
+        </div>
+    </div>
+
+    <!-- Issuance List Section -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Issuance List</h5>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Vintage</th>
+                        <th>Quantity</th>
+                        <th>Product</th>
+                        <th>Issuance Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="5" class="text-center">There are no issuances.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Certification Documents Section -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Certification Documents</h5>
+            <a href="#" class="btn btn-primary">View Certification Documents in Sustain CERT</a>
+        </div>
+    </div>
+</div>
+
+<!-- Mapbox JS -->
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
+
+<!-- Mapbox Script -->
+<script>
+    mapboxgl.accessToken = 'your_access_token';
+    var map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [101.6869, 3.1390], // starting position [lng, lat]
+        zoom: 5 // starting zoom
+    });
+
+    // Add zoom and rotation controls to the map.
+    map.addControl(new mapboxgl.NavigationControl());
+</script>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
