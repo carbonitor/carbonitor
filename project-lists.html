@@ -40,7 +40,7 @@
 <div class="container mt-5">
     <div class="header-container">
         <h1>Project List</h1>
-        <button class="btn btn-primary login-button">Login</button>
+        <button class="btn btn-primary login-button" id="loginButton">Login</button>
     </div>
 
     <!-- Filter and Search Bar Section -->
@@ -103,7 +103,6 @@
 
     // Fetch project data from the admin panel (simulated for now)
     const projects = [
-        // Example data
         { id: '1', details: 'Project A', status: 'Planned', type: 'Infrastructure', country: 'Malaysia', file: 'fileA.pdf' },
         { id: '2', details: 'Project B', status: 'Ongoing', type: 'Health', country: 'Indonesia', file: 'fileB.pdf' },
         // More project data can be added here...
@@ -226,6 +225,11 @@
     document.getElementById('filter-type').addEventListener('change', applyFilters);
     document.getElementById('filter-country').addEventListener('change', applyFilters);
     document.getElementById('search-bar').addEventListener('input', applyFilters);
+
+    document.getElementById('loginButton').addEventListener('click', function() {
+        // Redirect to the admin panel
+        window.location.href = 'admin-panel.html';
+    });
 
     // Load initial data
     loadProjects();
