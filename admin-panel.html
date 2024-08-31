@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Login Form Section -->
+<div class="container mt-5" id="login-section">
+    <h1 class="mb-4">Admin Login</h1>
+    <div class="card mb-5">
+        <div class="card-header">Login</div>
+        <div class="card-body">
+            <form id="login-form">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Admin Panel Section -->
+<div class="container mt-5" id="admin-section" style="display: none;">
+    <h1 class="mb-4">Admin Panel - Add Project Data</h1>
+    <button class="btn btn-secondary mb-4" id="logout-button">Logout</button>
+
+    <!-- Admin Form Section -->
+    <div class="card mb-5">
+        <div class="card-header">Add New Project</div>
+        <div class="card-body">
+            <form id="admin-form">
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="id" class="form-label">ID</label>
+                        <input type="text" class="form-control" id="id" required>
+                    </div>
+                    <div class="col-md-8">
+                        <label for="project-details" class="form-label">Project Details</label>
+                        <input type="text" class="form-control" id="project-details" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="status" class="form-label">Status</label>
+                        <select id="status" class="form-select" required>
+                            <option value="" selected disabled>Select Status</option>
+                            <option value="Planned">Planned</option>
+                            <option value="Ongoing">Ongoing</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="project-type" class="form-label">Project Type</label>
+                        <input type="text" class="form-control" id="project-type" required placeholder="Type project type manually">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="country" class="form-label">Country</label>
+                        <select id="country" class="form-select" required>
+                            <option value="" selected disabled>Select Country</option>
+                            <option value="Malaysia">Malaysia</option>
+                            <option value="Indonesia">Indonesia</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <label for="project-file" class="form-label">Upload Project File</label>
+                        <input type="file" class="form-control" id="project-file">
+                    </div>
+                </div>                
+                <button type="submit" class="btn btn-primary">Add Project</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Project Table -->
+    <h2>All Projects</h2>
+    <table class="table table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>Project Details</th>
+                <th>Status</th>
+                <th>Project Type</th>
+                <th>Country</th>
+                <th>File</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="project-list">
+            <!-- Project data will be dynamically added here -->
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Simple authentication check (replace with real authentication logic)
+        if (username === 'miyoy' && password === 'carbonitor#hack24') {
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('admin-section').style.display = 'block';
+        } else {
+            alert('Invalid username or password');
+        }
+    });
+
+    document.getElementById('logout-button').addEventListener('click', function() {
+        document.getElementById('login-section').style.display = 'block';
+        document.getElementById('admin-section').style.display = 'none';
+    });
+
+    document.getElementById('admin-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get form values
+    const id = document.getElementById('id').value;
+    const projectDetails = document.getElementById('project-details').value;
+    const status = document.getElementById('status').value;
+    const projectType = document.getElementById('project-type').value;
+    const country = document.getElementById('country').value;
+    const fileInput = document.getElementById('project-file');
+    const fileName = fileInput.files[0]?.name || 'No file uploaded'; // Handle optional file upload
+
+    // Create a new table row with data attributes
+    const newRow = document.createElement('tr');
+    newRow.dataset.status = status;
+    newRow.dataset.type = projectType;
+    newRow.dataset.country = country;
+    newRow.innerHTML = `
+        <td>${id}</td>
+        <td>${projectDetails}</td>
+        <td>${status}</td>
+        <td>${projectType}</td>
+        <td>${country}</td>
+        <td>${fileName !== 'No file uploaded' ? `<a href="#" download="${fileName}">${fileName}</a>` : fileName}</td>
+        <td><button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button></td>
+    `;
+
+    // Add new row to the project table
+    document.getElementById('project-list').appendChild(newRow);
+
+    // Clear form fields
+    document.getElementById('admin-form').reset();
+});
+
+
+    function deleteRow(button) {
+        const row = button.closest('tr');
+        row.remove();
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
