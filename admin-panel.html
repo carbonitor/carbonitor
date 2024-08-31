@@ -54,7 +54,7 @@
                         <label for="status" class="form-label">Status</label>
                         <select id="status" class="form-select" required>
                             <option value="" selected disabled>Select Status</option>
-                            <option value="Planned">Under Validation</option>
+                            <option value="Under Validation">Under Validation</option>
                             <option value="Planned">Planned</option>
                             <option value="Ongoing">Ongoing</option>
                             <option value="Completed">Completed</option>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="project-type" class="form-label">Project Type</label>
-                        <input type="text" class="form-control" id="project-type" required placeholder="Type project type manually">
+                        <input type="text" class="form-control" id="project-type" required>
                     </div>
                     <div class="col-md-4">
                         <label for="country" class="form-label">Country</label>
@@ -78,7 +78,7 @@
                         <label for="project-file" class="form-label">Upload Project File</label>
                         <input type="file" class="form-control" id="project-file">
                     </div>
-                </div>                
+                </div>
                 <button type="submit" class="btn btn-primary">Add Project</button>
             </form>
         </div>
@@ -127,43 +127,64 @@
     });
 
     document.getElementById('admin-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
+        event.preventDefault(); // Prevent form submission
 
-    // Get form values
-    const id = document.getElementById('id').value;
-    const projectDetails = document.getElementById('project-details').value;
-    const status = document.getElementById('status').value;
-    const projectType = document.getElementById('project-type').value;
-    const country = document.getElementById('country').value;
-    const fileInput = document.getElementById('project-file');
-    const fileName = fileInput.files[0]?.name || 'No file uploaded'; // Handle optional file upload
+        // Get form values
+        const id = document.getElementById('id').value;
+        const projectDetails = document.getElementById('project-details').value;
+        const status = document.getElementById('status').value;
+        const projectType = document.getElementById('project-type').value;
+        const country = document.getElementById('country').value;
+        const fileInput = document.getElementById('project-file');
+        const fileName = fileInput.files[0]?.name || 'No file uploaded'; // Handle optional file upload
 
-    // Create a new table row with data attributes
-    const newRow = document.createElement('tr');
-    newRow.dataset.status = status;
-    newRow.dataset.type = projectType;
-    newRow.dataset.country = country;
-    newRow.innerHTML = `
-        <td>${id}</td>
-        <td>${projectDetails}</td>
-        <td>${status}</td>
-        <td>${projectType}</td>
-        <td>${country}</td>
-        <td>${fileName !== 'No file uploaded' ? `<a href="#" download="${fileName}">${fileName}</a>` : fileName}</td>
-        <td><button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button></td>
-    `;
+        // Create a new table row with data attributes
+        const newRow = document.createElement('tr');
+        newRow.dataset.status = status;
+        newRow.dataset.type = projectType;
+        newRow.dataset.country = country;
+        newRow.innerHTML = `
+            <td>${id}</td>
+            <td>${projectDetails}</td>
+            <td>${status}</td>
+            <td>${projectType}</td>
+            <td>${country}</td>
+            <td>${fileName !== 'No file uploaded' ? `<a href="#" download="${fileName}">${fileName}</a>` : fileName}</td>
+            <td><button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button></td>
+        `;
 
-    // Add new row to the project table
-    document.getElementById('project-list').appendChild(newRow);
+        // Add new row to the project table
+        document.getElementById('project-list').appendChild(newRow);
 
-    // Clear form fields
-    document.getElementById('admin-form').reset();
-});
+        // Save data to localStorage (or any other storage mechanism)
+        saveProjectData();
 
+        // Clear form fields
+        document.getElementById('admin-form').reset();
+    });
 
     function deleteRow(button) {
         const row = button.closest('tr');
         row.remove();
+        // Update the stored data after deletion
+        saveProjectData();
+    }
+
+    function saveProjectData() {
+        const rows = document.querySelectorAll('#project-list tr');
+        const projects = [];
+        rows.forEach(row => {
+            const cells = row.querySelectorAll('td');
+            projects.push({
+                id: cells[0].textContent,
+                projectDetails: cells[1].textContent,
+                status: cells[2].textContent,
+                projectType: cells[3].textContent,
+                country: cells[4].textContent,
+                fileName: cells[5].textContent
+            });
+        });
+        localStorage.setItem('projects', JSON.stringify(projects));
     }
 </script>
 
