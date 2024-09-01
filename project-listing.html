@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project List with Filters and Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @media (max-width: 768px) {
+            .table-responsive {
+                overflow-x: auto;
+            }
+            .sticky-actions {
+                position: sticky;
+                right: 0;
+                background: white;
+                z-index: 1;
+            }
+            th, td {
+                white-space: nowrap;
+            }
+        }
+        .comment-section {
+            margin-top: 10px;
+        }
+        .comment-item {
+            margin-bottom: 10px;
+        }
+        .modal-dialog {
+            max-width: 600px;
+        }
+        .icon-container {
+            text-align: center; /* Center align the icon */
+        }
+        .icon-container button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="mb-4">All Projects</h1>
+
+    <!-- Filter and Search Bar Section -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <!-- Filter Section -->
+            <div class="d-flex">
+                <select id="filter-status" class="form-select me-2" aria-label="Project Status">
+                    <option value="" selected>Project Status</option>
+                    <option value="Planned">Planned</option>
+                    <option value="Listed">Listed</option>
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Ongoing">Certified</option>
+                    <option value="Completed">Completed</option>
+                </select>
+                <select id="filter-type" class="form-select me-2" aria-label="Project Type">
+                    <option value="" selected>Project Type</option>
+                    <option value="Energy Efficiency Domestic">Energy Efficiency Domestic</option>
+                    <option value="Energy Efficiency Commercial Sector">Energy Efficiency Commercial Sector</option>
+                    <option value="Biogas Electricity">Biogas Electricity</option>
+                    <option value="Other">Other</option>
+                </select>
+                <select id="filter-country" class="form-select" aria-label="Country">
+                    <option value="" selected>Country</option>
+                    <option value="Malaysia">Malaysia</option>
+                    <option value="Indonesia">Indonesia</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <!-- Search Bar -->
+            <div class="input-group">
+                <input id="search-bar" type="text" class="form-control" placeholder="Search for projects..." aria-label="Search">
+                <button class="btn btn-primary" type="button" onclick="applyFilters()">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Project Details</th>
+                    <th>Status</th>
+                    <th>Project Type</th>
+                    <th>Country</th>
+                    <th class="sticky-actions">Actions</th>
+                    <th class="center-icon">Comments</th>
+                </tr>
+            </thead>
+            <tbody id="project-list">
+            <!-- Page 1 (Rows 1-10) -->
+            <tr data-status="Planned" data-type="Other" data-country="Malaysia">
+                <td>11356</td>
+                <td>Fuel-Switch Project Deriving Carbon Assets from the Use of Non-Edible Raw Agriculture-Derived Oil System (NERADO System) To Replace Heavy Fuel Oil For Aluminum Dross Recycling In Malaysia</td>
+                <td>Listed</td>
+                <td>Biomass, or Liquid Biofuel - Electricity</td>
+                <td>Malaysia</td>
+                <td><a href="project-dashboard/11356/11356.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Planned" data-type="Other" data-country="Malaysia">
+                <td>12112</td>
+                <td>Liki Pinangawan Muaralaboh Geothermal Power Plant</td>
+                <td>Certified</td>
+                <td>Geothermal</td>
+                <td>Indonesia</td>
+                <td><a href="project-dashboard/12112/12112.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination Section -->
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <span id="project-count">1-10 of 10</span>
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination mb-0" id="pagination">
+                <li class="page-item disabled" id="prev-page">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo;</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item disabled"><span class="page-link">...</span></li>
+                <li class="page-item disabled" id="next-page">
+                    <a class="page-link" href="#">&raquo;</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!-- Comment Modal -->
+<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="commentModalLabel">Comments</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="comments-list" class="mb-3"></div>
+                <form id="commentForm">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="comment" class="form-label">Comment</label>
+                        <textarea class="form-control" id="comment" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+<script>
+    const rowsPerPage = 10;
+    let currentPage = 1;
+    let currentRow = null;
+
+    function applyFilters() {
+        const status = document.getElementById('filter-status').value.toLowerCase();
+        const type = document.getElementById('filter-type').value.toLowerCase();
+        const country = document.getElementById('filter-country').value.toLowerCase();
+        const search = document.getElementById('search-bar').value.toLowerCase();
+
+        const rows = Array.from(document.querySelectorAll('#project-list tr'));
+        let filteredRows = rows.filter(row => {
+            const rowStatus = row.dataset.status.toLowerCase();
+            const rowType = row.dataset.type.toLowerCase();
+            const rowCountry = row.dataset.country.toLowerCase();
+            const rowText = row.innerText.toLowerCase();
+
+            return (
+                (status === '' || rowStatus.includes(status)) &&
+                (type === '' || rowType.includes(type)) &&
+                (country === '' || rowCountry.includes(country)) &&
+                (search === '' || rowText.includes(search))
+            );
+        });
+
+        // Pagination
+        displayRows(filteredRows);
+        updatePagination(filteredRows.length);
+    }
+
+    function displayRows(rows) {
+        const start = (currentPage - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+        const paginatedRows = rows.slice(start, end);
+
+        const projectList = document.getElementById('project-list');
+        projectList.innerHTML = '';
+        paginatedRows.forEach(row => {
+            projectList.appendChild(row);
+        });
+    }
+
+    function updatePagination(totalRows) {
+        const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+        const pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+
+        const prevPage = document.createElement('li');
+        prevPage.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+        prevPage.innerHTML = `<a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo;</a>`;
+        prevPage.addEventListener('click', () => changePage(currentPage - 1));
+        pagination.appendChild(prevPage);
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageItem = document.createElement('li');
+            pageItem.className = `page-item ${i === currentPage ? 'active' : ''}`;
+            pageItem.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+            pageItem.addEventListener('click', () => changePage(i));
+            pagination.appendChild(pageItem);
+        }
+
+        const nextPage = document.createElement('li');
+        nextPage.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+        nextPage.innerHTML = `<a class="page-link" href="#">&raquo;</a>`;
+        nextPage.addEventListener('click', () => changePage(currentPage + 1));
+        pagination.appendChild(nextPage);
+
+        document.getElementById('project-count').textContent = `${(currentPage - 1) * rowsPerPage + 1}-${Math.min(currentPage * rowsPerPage, totalRows)} of ${totalRows}`;
+    }
+
+    function changePage(pageNumber) {
+        currentPage = pageNumber;
+        applyFilters();
+    }
+
+    function openCommentModal(button) {
+        currentRow = button.closest('tr'); // Store the current row
+        const modal = new bootstrap.Modal(document.getElementById('commentModal'));
+        populateComments();
+        modal.show();
+    }
+
+    function populateComments() {
+        if (!currentRow) return;
+        
+        const commentSection = currentRow.querySelector('.comment-section');
+        const commentsList = document.getElementById('comments-list');
+        
+        commentsList.innerHTML = '';
+        if (commentSection) {
+            const comments = JSON.parse(commentSection.dataset.comments || '[]');
+            comments.forEach(comment => {
+                const commentItem = document.createElement('div');
+                commentItem.className = 'comment-item';
+                commentItem.innerHTML = `<strong>${comment.username}</strong> (${comment.email}): <p>${comment.comment}</p>`;
+                commentsList.appendChild(commentItem);
+            });
+        }
+    }
+
+    document.getElementById('commentForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const commentText = document.getElementById('comment').value;
+
+        if (!currentRow) return;
+
+        let commentSection = currentRow.querySelector('.comment-section');
+        if (!commentSection) {
+            commentSection = document.createElement('div');
+            commentSection.className = 'comment-section';
+            currentRow.appendChild(commentSection);
+        }
+
+        // Add new comment to comment section
+        let comments = JSON.parse(commentSection.dataset.comments || '[]');
+        comments.push({ username, email, comment: commentText });
+        commentSection.dataset.comments = JSON.stringify(comments);
+
+        // Add new comment to modal
+        const commentItem = document.createElement('div');
+        commentItem.className = 'comment-item';
+        commentItem.innerHTML = `<strong>${username}</strong> (${email}): <p>${commentText}</p>`;
+        document.getElementById('comments-list').appendChild(commentItem);
+
+        // Clear form inputs
+        document.getElementById('username').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('comment').value = '';
+
+        // Hide the modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('commentModal'));
+        modal.hide();
+    });
+
+    // Initialize filters and pagination
+    applyFilters();
+</script>
+
+</body>
+</html>
