@@ -42,6 +42,13 @@
 </head>
 <body>
 
+<!-- navbar -->
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <a href="index.html" class="navbar-brand fw-bold">Carbonitor</a>
+    </div>
+  </nav>
+
 <div class="container mt-5">
     <h1 class="mb-4">All Projects</h1>
 
@@ -103,7 +110,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Project Table -->
     <div class="table-responsive">
         <table class="table table-bordered">
@@ -1049,6 +1056,7 @@
             </tbody>
         </table>
     </div>
+
     <!-- Pagination Section -->
     <div class="d-flex justify-content-between align-items-center">
         <div>
@@ -1103,147 +1111,150 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
 <script>
-    const rowsPerPage = 10;
-    let currentPage = 1;
-    let currentRow = null;
+const rowsPerPage = 10;
+let currentPage = 1;
+let filteredRows = [];
 
-    function applyFilters() {
-        const status = document.getElementById('filter-status').value.toLowerCase();
-        const type = document.getElementById('filter-type').value.toLowerCase();
-        const country = document.getElementById('filter-country').value.toLowerCase();
-        const search = document.getElementById('search-bar').value.toLowerCase();
+function applyFilters() {
+    const status = document.getElementById('filter-status').value.toLowerCase();
+    const type = document.getElementById('filter-type').value.toLowerCase();
+    const country = document.getElementById('filter-country').value.toLowerCase();
+    const search = document.getElementById('search-bar').value.toLowerCase();
 
-        const rows = Array.from(document.querySelectorAll('#project-list tr'));
-        let filteredRows = rows.filter(row => {
-            const rowStatus = row.dataset.status.toLowerCase();
-            const rowType = row.dataset.type.toLowerCase();
-            const rowCountry = row.dataset.country.toLowerCase();
-            const rowText = row.innerText.toLowerCase();
+    const rows = Array.from(document.querySelectorAll('#project-list tr'));
+    filteredRows = rows.filter(row => {
+        const rowStatus = row.dataset.status.toLowerCase();
+        const rowType = row.dataset.type.toLowerCase();
+        const rowCountry = row.dataset.country.toLowerCase();
+        const rowText = row.innerText.toLowerCase();
 
-            return (
-                (status === '' || rowStatus.includes(status)) &&
-                (type === '' || rowType.includes(type)) &&
-                (country === '' || rowCountry.includes(country)) &&
-                (search === '' || rowText.includes(search))
-            );
-        });
-
-        // Pagination
-        displayRows(filteredRows);
-        updatePagination(filteredRows.length);
-    }
-
-    function displayRows(rows) {
-        const start = (currentPage - 1) * rowsPerPage;
-        const end = start + rowsPerPage;
-        const paginatedRows = rows.slice(start, end);
-
-        const projectList = document.getElementById('project-list');
-        projectList.innerHTML = '';
-        paginatedRows.forEach(row => {
-            projectList.appendChild(row);
-        });
-    }
-
-    function updatePagination(totalRows) {
-        const totalPages = Math.ceil(totalRows / rowsPerPage);
-
-        const pagination = document.getElementById('pagination');
-        pagination.innerHTML = '';
-
-        const prevPage = document.createElement('li');
-        prevPage.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
-        prevPage.innerHTML = `<a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo;</a>`;
-        prevPage.addEventListener('click', () => changePage(currentPage - 1));
-        pagination.appendChild(prevPage);
-
-        for (let i = 1; i <= totalPages; i++) {
-            const pageItem = document.createElement('li');
-            pageItem.className = `page-item ${i === currentPage ? 'active' : ''}`;
-            pageItem.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-            pageItem.addEventListener('click', () => changePage(i));
-            pagination.appendChild(pageItem);
-        }
-
-        const nextPage = document.createElement('li');
-        nextPage.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
-        nextPage.innerHTML = `<a class="page-link" href="#">&raquo;</a>`;
-        nextPage.addEventListener('click', () => changePage(currentPage + 1));
-        pagination.appendChild(nextPage);
-
-        document.getElementById('project-count').textContent = `${(currentPage - 1) * rowsPerPage + 1}-${Math.min(currentPage * rowsPerPage, totalRows)} of ${totalRows}`;
-    }
-
-    function changePage(pageNumber) {
-        currentPage = pageNumber;
-        applyFilters();
-    }
-
-    function openCommentModal(button) {
-        currentRow = button.closest('tr'); // Store the current row
-        const modal = new bootstrap.Modal(document.getElementById('commentModal'));
-        populateComments();
-        modal.show();
-    }
-
-    function populateComments() {
-        if (!currentRow) return;
-        
-        const commentSection = currentRow.querySelector('.comment-section');
-        const commentsList = document.getElementById('comments-list');
-        
-        commentsList.innerHTML = '';
-        if (commentSection) {
-            const comments = JSON.parse(commentSection.dataset.comments || '[]');
-            comments.forEach(comment => {
-                const commentItem = document.createElement('div');
-                commentItem.className = 'comment-item';
-                commentItem.innerHTML = `<strong>${comment.username}</strong> (${comment.email}): <p>${comment.comment}</p>`;
-                commentsList.appendChild(commentItem);
-            });
-        }
-    }
-
-    document.getElementById('commentForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submission
-
-        const username = document.getElementById('username').value;
-        const email = document.getElementById('email').value;
-        const commentText = document.getElementById('comment').value;
-
-        if (!currentRow) return;
-
-        let commentSection = currentRow.querySelector('.comment-section');
-        if (!commentSection) {
-            commentSection = document.createElement('div');
-            commentSection.className = 'comment-section';
-            currentRow.appendChild(commentSection);
-        }
-
-        // Add new comment to comment section
-        let comments = JSON.parse(commentSection.dataset.comments || '[]');
-        comments.push({ username, email, comment: commentText });
-        commentSection.dataset.comments = JSON.stringify(comments);
-
-        // Add new comment to modal
-        const commentItem = document.createElement('div');
-        commentItem.className = 'comment-item';
-        commentItem.innerHTML = `<strong>${username}</strong> (${email}): <p>${commentText}</p>`;
-        document.getElementById('comments-list').appendChild(commentItem);
-
-        // Clear form inputs
-        document.getElementById('username').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('comment').value = '';
-
-        // Hide the modal
-        const modal = bootstrap.Modal.getInstance(document.getElementById('commentModal'));
-        modal.hide();
+        return (
+            (status === '' || rowStatus.includes(status)) &&
+            (type === '' || rowType.includes(type)) &&
+            (country === '' || rowCountry.includes(country)) &&
+            (search === '' || rowText.includes(search))
+        );
     });
 
-    // Initialize filters and pagination
-    applyFilters();
+    // Reset to the first page and display rows
+    currentPage = 1;
+    displayRows();
+    updatePagination();
+}
+
+function displayRows() {
+    const start = (currentPage - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+    const paginatedRows = filteredRows.slice(start, end);
+
+    const projectList = document.getElementById('project-list');
+    projectList.innerHTML = '';
+    paginatedRows.forEach(row => {
+        projectList.appendChild(row);
+    });
+
+    document.getElementById('project-count').textContent = `${start + 1}-${Math.min(end, filteredRows.length)} of ${filteredRows.length}`;
+}
+
+function updatePagination() {
+    const totalPages = Math.ceil(filteredRows.length / rowsPerPage);
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = '';
+
+    const prevPage = document.createElement('li');
+    prevPage.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+    prevPage.innerHTML = `<a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo;</a>`;
+    prevPage.addEventListener('click', () => changePage(currentPage - 1));
+    pagination.appendChild(prevPage);
+
+    for (let i = 1; i <= totalPages; i++) {
+        const pageItem = document.createElement('li');
+        pageItem.className = `page-item ${i === currentPage ? 'active' : ''}`;
+        pageItem.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+        pageItem.addEventListener('click', () => changePage(i));
+        pagination.appendChild(pageItem);
+    }
+
+    const nextPage = document.createElement('li');
+    nextPage.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+    nextPage.innerHTML = `<a class="page-link" href="#">»</a>`;
+    nextPage.addEventListener('click', () => changePage(currentPage + 1));
+    pagination.appendChild(nextPage);
+}
+
+function changePage(pageNumber) {
+    if (pageNumber < 1 || pageNumber > Math.ceil(filteredRows.length / rowsPerPage)) return;
+    currentPage = pageNumber;
+    displayRows();
+    updatePagination();
+}
+
+function openCommentModal(button) {
+    currentRow = button.closest('tr'); // Store the current row
+    const modal = new bootstrap.Modal(document.getElementById('commentModal'));
+    populateComments();
+    modal.show();
+}
+
+function populateComments() {
+    if (!currentRow) return;
+    
+    const commentSection = currentRow.querySelector('.comment-section');
+    const commentsList = document.getElementById('comments-list');
+    
+    commentsList.innerHTML = '';
+    if (commentSection) {
+        const comments = JSON.parse(commentSection.dataset.comments || '[]');
+        comments.forEach(comment => {
+            const commentItem = document.createElement('div');
+            commentItem.className = 'comment-item';
+            commentItem.innerHTML = `<strong>${comment.username}</strong> (${comment.email}): <p>${comment.comment}</p>`;
+            commentsList.appendChild(commentItem);
+        });
+    }
+}
+
+document.getElementById('commentForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const commentText = document.getElementById('comment').value;
+
+    if (!currentRow) return;
+
+    let commentSection = currentRow.querySelector('.comment-section');
+    if (!commentSection) {
+        commentSection = document.createElement('div');
+        commentSection.className = 'comment-section';
+        currentRow.appendChild(commentSection);
+    }
+
+    // Add new comment to comment section
+    let comments = JSON.parse(commentSection.dataset.comments || '[]');
+    comments.push({ username, email, comment: commentText });
+    commentSection.dataset.comments = JSON.stringify(comments);
+
+    // Add new comment to modal
+    const commentItem = document.createElement('div');
+    commentItem.className = 'comment-item';
+    commentItem.innerHTML = `<strong>${username}</strong> (${email}): <p>${commentText}</p>`;
+    document.getElementById('comments-list').appendChild(commentItem);
+
+    // Clear form inputs
+    document.getElementById('username').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('comment').value = '';
+
+    // Hide the modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('commentModal'));
+    modal.hide();
+});
+
+// Initialize filters and pagination
+applyFilters();
 </script>
+
 
 </body>
 </html>
