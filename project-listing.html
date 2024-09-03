@@ -55,7 +55,18 @@
                     <option value="Planned">Planned</option>
                     <option value="Listed">Listed</option>
                     <option value="Ongoing">Ongoing</option>
-                    <option value="Ongoing">Certified</option>
+                    <option value="Certified">Certified</option>
+                    <option value="Estimated">Estimated</option>
+                    <option value="Under validation">Under validation</option>
+                    <option value="Under development">Under development</option>
+                    <option value="Verification approval requested">Verification approval requested</option>
+                    <option value="Registered">Registered</option>
+                    <option value="Late to verify">Late to verify</option>
+                    <option value="Inactive">Inactive</option>
+                    <option value="Rejected by Administrator">Rejected by Administrator</option>
+                    <option value="Registration requested">Registration requested</option>
+                    <option value="Withdrawn">Withdrawn</option>
+                    <option value="Units Transferred from Approved GHG Program">Units Transferred from Approved GHG Program</option>
                     <option value="Completed">Completed</option>
                 </select>
                 <select id="filter-type" class="form-select me-2" aria-label="Project Type">
@@ -63,6 +74,18 @@
                     <option value="Energy Efficiency Domestic">Energy Efficiency Domestic</option>
                     <option value="Energy Efficiency Commercial Sector">Energy Efficiency Commercial Sector</option>
                     <option value="Biogas Electricity">Biogas Electricity</option>
+                    <option value="Biomass, or Liquid Biofuel">Biomass, or Liquid Biofuel</option>
+                    <option value="Solar Thermal">Solar Thermal</option>
+                    <option value="Wind">Wind</option>
+                    <option value="Biogas">Biogas</option>
+                    <option value="Energy Efficiency">Energy Efficiency</option>
+                    <option value="Small, Low">Small, Low - Impact Hydro</option>
+                    <option value="Waste handling and disposal">Waste handling and disposal</option>
+                    <option value="Agriculture Forestry and Other Land Use">Agriculture Forestry and Other Land Use</option>
+                    <option value="Energy industries">Energy industries</option>
+                    <option value="Energy demand">Energy demand</option>
+                    <option value="Fugitive emissions from fuels">Fugitive emissions from fuels</option>
+                    <option value="Metal production">Metal production</option>
                     <option value="Other">Other</option>
                 </select>
                 <select id="filter-country" class="form-select" aria-label="Country">
@@ -80,7 +103,7 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Project Table -->
     <div class="table-responsive">
         <table class="table table-bordered">
@@ -97,25 +120,927 @@
             </thead>
             <tbody id="project-list">
             <!-- Page 1 (Rows 1-10) -->
-            <tr data-status="Planned" data-type="Other" data-country="Malaysia">
+            <tr data-status="Listed" data-type="Biomass, or Liquid Biofuel - Electricity" data-country="Malaysia">
                 <td>11356</td>
                 <td>Fuel-Switch Project Deriving Carbon Assets from the Use of Non-Edible Raw Agriculture-Derived Oil System (NERADO System) To Replace Heavy Fuel Oil For Aluminum Dross Recycling In Malaysia</td>
                 <td>Listed</td>
                 <td>Biomass, or Liquid Biofuel - Electricity</td>
                 <td>Malaysia</td>
-                <td><a href="project-dashboard/11356/11356.html" class="btn btn-info">VIEW</a></td>
+                <td><a href="/11356/11356.html" class="btn btn-info">VIEW</a></td>
                 <td class="icon-container">
                     <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
                     <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
                 </td>
             </tr>
-            <tr data-status="Planned" data-type="Other" data-country="Malaysia">
+            <tr data-status="Certified" data-type="Geothermal" data-country="Indonesia">
                 <td>12112</td>
                 <td>Liki Pinangawan Muaralaboh Geothermal Power Plant</td>
                 <td>Certified</td>
                 <td>Geothermal</td>
                 <td>Indonesia</td>
-                <td><a href="project-dashboard/12112/12112.html" class="btn btn-info">VIEW</a></td>
+                <td><a href="/12112/12112.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Listed" data-type="Geothermal" data-country="Indonesia">
+                <td>11719</td>
+                <td>Brine Heat Recovery Binary Power Plant</td>
+                <td>Listed</td>
+                <td>Geothermal</td>
+                <td>Indonesia</td>
+                <td><a href="/11719/11719.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Certified" data-type="Other" data-country="Indonesia">
+                <td>7561</td>
+                <td>Gianyar Waste Recovery Project</td>
+                <td>Certified</td>
+                <td>Other</td>
+                <td>Indonesia</td>
+                <td><a href="/7561/7561.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Certified" data-type="Wind" data-country="Indonesia">
+                <td>7553</td>
+                <td>42 MWp Bundled Solar Photovoltaic Power project in Indonesia</td>
+                <td>Certified</td>
+                <td>Solar Thermal - Electricity</td>
+                <td>Indonesia</td>
+                <td><a href="/7553/7553.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Certified" data-type="Solar Thermal - Electricity" data-country="Indonesia">
+                <td>7164</td>
+                <td>72 MW Wind power project in the South Sulawesi Province of Indonesia</td>
+                <td>Certified</td>
+                <td>Wind</td>
+                <td>Indonesia</td>
+                <td><a href="/7164/7164.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Certified" data-type="Biogas" data-country="Indonesia">
+                <td>5303</td>
+                <td>Indonesia Domestic Biogas Programme of Activities (IDBP) (ID 1172), VPA-2</td>
+                <td>Certified</td>
+                <td>Biogas - Heat</td>
+                <td>Indonesia</td>
+                <td><a href="/5303/5303.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Estimated" data-type="Biogas" data-country="Indonesia">
+                <td>1172</td>
+                <td>Indonesia Domestic Biogas Programme of Activities (IDBP)</td>
+                <td>Estimated</td>
+                <td>Biogas - Heat</td>
+                <td>Indonesia</td>
+                <td><a href="/1172/1172.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Certified" data-type="Wind" data-country="Indonesia">
+                <td>4813</td>
+                <td>Sidrap Wind Farm Project Phase 1</td>
+                <td>Certified</td>
+                <td>Wind</td>
+                <td>Indonesia</td>
+                <td><a href="/4813/4813.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Certified" data-type="Energy Efficiency" data-country="Indonesia">
+                <td>4290</td>
+                <td>Nazava Water Filter Project</td>
+                <td>Certified</td>
+                <td>Energy Efficiency - Domestic</td>
+                <td>Indonesia</td>
+                <td><a href="/4290/4290.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+
+            <!-- Page 10 - 20 -->
+            <tr data-status="Estimated" data-type="Biogas" data-country="Indonesia">
+                <td>942</td>
+                <td>Methane Recovery and Utilization at PT. Musim Mas Palm Oil Mill in Pangkalan Lesung, Riau Indonesia</td>
+                <td>Estimated</td>
+                <td>Biogas - Electricity</td>
+                <td>Indonesia</td>
+                <td><a href="/942/942.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Planned" data-type="Small, Low" data-country="Indonesia">
+                <td>794</td>
+                <td>GS790_Sustainable Small Hydropower Programme of Activities (PoA) - CPA Manggani Hydroelectric Project Pre-CDM VER</td>
+                <td>Planned</td>
+                <td>Small, Low - Impact Hydro</td>
+                <td>Indonesia</td>
+                <td><a href="/794/794.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Planned" data-type="Small, Low" data-country="Indonesia">
+                <td>790</td>
+                <td>GS790_Sustainable Small Hydropower Programme of Activities (PoA) in Indonesia (300218)</td>
+                <td>Planned</td>
+                <td>Small, Low - Impact Hydro</td>
+                <td>Indonesia</td>
+                <td><a href="/790/790.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Planned" data-type="Small, Low" data-country="Indonesia">
+                <td>822</td>
+                <td>GS790_Sustainable Small Hydropower PoA - 1.1 MW Manggani Mini Hydroelectric Project, West Sumatera, Indonesia (300469)</td>
+                <td>Planned</td>
+                <td>Small, Low - Impact Hydro</td>
+                <td>Indonesia</td>
+                <td><a href="/822/822.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Certified" data-type="Small, Low" data-country="Indonesia">
+                <td>423</td>
+                <td>*Salido Kecil Mini Hydropower Plant</td>
+                <td>Certified</td>
+                <td>Small, Low - Impact Hydro</td>
+                <td>Indonesia</td>
+                <td><a href="/423/423.html" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Certified" data-type="Geothermal" data-country="Indonesia">
+                <td>2419</td>
+                <td>Project Karaha Unit 1 PT. Pertamina Geothermal Energy</td>
+                <td>Certified</td>
+                <td>Geothermal</td>
+                <td>Indonesia</td>
+                <td><a href="/2419/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Estimated" data-type="Geothermal" data-country="Indonesia">
+                <td>2418</td>
+                <td>Project Kamojang unit 5 PT. Pertamina Geothermal Energy</td>
+                <td>Estimated</td>
+                <td>Geothermal</td>
+                <td>Indonesia</td>
+                <td><a href="/2418/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Estimated" data-type="Geothermal" data-country="Indonesia">
+                <td>2299</td>
+                <td>Project Lumut Balai Unit 3 - 4 PT. Pertamina Geothermal Energy</td>
+                <td>Estimated</td>
+                <td>Geothermal</td>
+                <td>Indonesia</td>
+                <td><a href="/2299/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Estimated" data-type="Geothermal" data-country="Indonesia">
+                <td>2298</td>
+                <td>Project Lumut Balai Unit 1 - 2 PT. Pertamina Geothermal Energy</td>
+                <td>Estimated</td>
+                <td>Geothermal</td>
+                <td>Indonesia</td>
+                <td><a href="/2298/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Certified" data-type="Geothermal" data-country="Indonesia">
+                <td>2297</td>
+                <td>Project Ulubelu Unit 3 - 4 PT. Pertamina Geothermal Energy</td>
+                <td>Certified</td>
+                <td>Geothermal</td>
+                <td>Indonesia</td>
+                <td><a href="/2297/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Certified" data-type="Biomass, or Liquid Biofuel" data-country="Indonesia">
+                <td>1374</td>
+                <td>Recyling Used Cooking Oil into Biodiesel in Bali</td>
+                <td>Certified</td>
+                <td>Biomass, or Liquid Biofuel - Heat</td>
+                <td>Indonesia</td>
+                <td><a href="/2297/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Certified" data-type="Other" data-country="Indonesia">
+                <td>1295</td>
+                <td>KIPRAH community based integrated waste management project, Indonesia</td>
+                <td>Certified</td>
+                <td>Other</td>
+                <td>Indonesia</td>
+                <td><a href="/1295/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Certified" data-type="Biogas" data-country="Indonesia">
+                <td>1174</td>
+                <td>Indonesia Domestic Biogas Programme of Activities (IDBP) , VPA-1</td>
+                <td>Certified</td>
+                <td>Biogas - Heat</td>
+                <td>Indonesia</td>
+                <td><a href="/1174/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Planned" data-type="Biogas" data-country="Indonesia">
+                <td>1143</td>
+                <td>CPA B11001 – Bagendung Landfill Gas Recovery</td>
+                <td>Planned</td>
+                <td>Biogas - Electricity</td>
+                <td>Indonesia</td>
+                <td><a href="/1143/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under validation" data-type="Waste handling and disposal" data-country="Malaysia">
+                <td>4887</td>
+                <td>WASTEWATER TO BIOGAS GROUPED PROJECT</td>
+                <td>Under validation</td>
+                <td>Waste handling and disposal</td>
+                <td>Malaysia</td>
+                <td><a href="/4887/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under development" data-type="Agriculture Forestry and Other Land Use" data-country="Malaysia">
+                <td>4814</td>
+                <td>Marudi Forest Conservation and Restoration Project</td>
+                <td>Under development</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Malaysia</td>
+                <td><a href="/4814/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Verification approval requested" data-type="Waste handling and disposal" data-country="Malaysia">
+                <td>4279</td>
+                <td>Monsoon Methane Avoidance from Industrial Wastewater in Malaysia Grouped Project</td>
+                <td>Verification approval requested</td>
+                <td>Waste handling and disposal</td>
+                <td>Malaysia</td>
+                <td><a href="/4279/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Agriculture Forestry and Other Land Use" data-country="Malaysia">
+                <td>2609</td>
+                <td>KUAMUT RAINFOREST CONSERVATION PROJECT</td>
+                <td>Registered</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Malaysia</td>
+                <td><a href="/2609/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Energy industries" data-country="Malaysia">
+                <td>968</td>
+                <td>Sungai Kerling Hydropower Plant</td>
+                <td>Registered</td>
+                <td>Energy industries (renewable/non-renewable sources)</td>
+                <td>Malaysia</td>
+                <td><a href="/968/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Late to verify" data-type="Energy industries" data-country="Malaysia">
+                <td>1016</td>
+                <td>CE TECHNOLOGY FUEL SWITCH FOR CLEANROOM GLOVE INDUSTRY PROJECT, TAIPING</td>
+                <td>Late to verify</td>
+                <td>Energy industries (renewable/non-renewable sources)</td>
+                <td>Malaysia</td>
+                <td><a href="/1016/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Agriculture Forestry and Other Land Use" data-country="Malaysia">
+                <td>672</td>
+                <td>INFAPRO Rehabilitation of logged-over dipterocarp forest in Sabah, Malaysia</td>
+                <td>Registered</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Malaysia</td>
+                <td><a href="/672/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Late to verify" data-type="Waste handling and disposal" data-country="Malaysia">
+                <td>769</td>
+                <td>Methane recovery and utilisation project at United Plantations Berhad, Jendarata Palm Oil Mill, Malaysia</td>
+                <td>Late to verify</td>
+                <td>Waste handling and disposal</td>
+                <td>Malaysia</td>
+                <td><a href="/769/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Waste handling and disposal" data-country="Malaysia">
+                <td>860</td>
+                <td>AMA08-W-22, METHANE RECOVERY IN WASTEWATER TREATMENT JOHOR, MALAYSIA</td>
+                <td>Registered</td>
+                <td>Waste handling and disposal</td>
+                <td>Malaysia</td>
+                <td><a href="/860/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Waste handling and disposal" data-country="Malaysia">
+                <td>861</td>
+                <td>AMA08-W-21, METHANE RECOVERY IN WASTEWATER TREATMENT JOHOR, MALAYSIA</td>
+                <td>Registered</td>
+                <td>Waste handling and disposal</td>
+                <td>Malaysia</td>
+                <td><a href="/861/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Waste handling and disposal" data-country="Malaysia">
+                <td>862</td>
+                <td>AMA08-W-24, METHANE RECOVERY IN WASTEWATER TREATMENT PAHANG, MALAYSIA</td>
+                <td>Registered</td>
+                <td>Waste handling and disposal</td>
+                <td>Malaysia</td>
+                <td><a href="/862/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Waste handling and disposal" data-country="Malaysia">
+                <td>863</td>
+                <td>AMA08-W-25, METHANE RECOVERY IN WASTEWATER TREATMENT PAHANG, MALAYSIA</td>
+                <td>Registered</td>
+                <td>Waste handling and disposal</td>
+                <td>Malaysia</td>
+                <td><a href="/863/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Waste handling and disposal" data-country="Malaysia">
+                <td>864</td>
+                <td>AMA08-W-23, METHANE RECOVERY IN WASTEWATER TREATMENT SARAWAK, MALAYSIA</td>
+                <td>Registered</td>
+                <td>Waste handling and disposal</td>
+                <td>Malaysia</td>
+                <td><a href="/864/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Waste handling and disposal" data-country="Malaysia">
+                <td>865</td>
+                <td>MY08-WWP-26, METHANE RECOVERY IN WASTEWATER TREATMENT PAHANG, MALAYSIA</td>
+                <td>Registered</td>
+                <td>Waste handling and disposal</td>
+                <td>Malaysia</td>
+                <td><a href="/865/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Waste handling and disposal" data-country="Malaysia">
+                <td>867</td>
+                <td>AMA08-W-10, METHANE RECOVERY IN WASTEWATER TREATMENT, KEDAH, MALAYSIA</td>
+                <td>Registered</td>
+                <td>Waste handling and disposal</td>
+                <td>Malaysia</td>
+                <td><a href="/867/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Late to verify" data-type="Energy industries" data-country="Malaysia">
+                <td>1552</td>
+                <td>Bundled run-of-river mini hydro power projects at Sungai Sia and Sungai Benus, Pahang, Malaysia</td>
+                <td>Late to verify</td>
+                <td>Energy industries (renewable/non-renewable sources)</td>
+                <td>Malaysia</td>
+                <td><a href="/1552/#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under development" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>5032</td>
+                <td>Kupu-Kupu Project - Enhancing Livelihoods through Mangrove Restoration and Silvofishery in South Sulawesi</td>
+                <td>Under development</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under validation" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>4967</td>
+                <td>PLUM Peat and Mangrove Conservation and Restoration Project (PLUM Project)</td>
+                <td>Under validation</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under validation" data-type="Energy industries" data-country="Indonesia">
+                <td>4792</td>
+                <td>RECOVERY AND AVOIDANCE OF METHANE FROM INDUSTRIAL WASTEWATER TREATMENT PROJECT AT TSE GROUP, INDONESIA</td>
+                <td>Under validation</td>
+                <td>Energy industries (renewable/non-renewable sources); Waste handling and disposal</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under validation" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>4782</td>
+                <td>South Barito Kapuas Project</td>
+                <td>Under validation</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under validation" data-type="Energy industries" data-country="Indonesia">
+                <td>4705</td>
+                <td>KIS BIOFUELS- UKINDO PROJECT</td>
+                <td>Under validation</td>
+                <td>Energy industries (renewable/non-renewable sources); Waste handling and disposal</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under validation" data-type="Energy industries" data-country="Indonesia">
+                <td>4611</td>
+                <td>Halmahera Zero-Waste Renewable Energy and Biochar Project</td>
+                <td>Under validation</td>
+                <td>Energy industries (renewable/non-renewable sources); Waste handling and disposal</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under development" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>4520</td>
+                <td>Muara Teweh Conservation Project</td>
+                <td>Under development</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under development" data-type="Waste handling and disposal" data-country="Indonesia">
+                <td>4467</td>
+                <td>TSH GROUPED BIOGAS RECOVERY PROJECT</td>
+                <td>Under development</td>
+                <td>Waste handling and disposal</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Inactive" data-type="Waste handling and disposal" data-country="Indonesia">
+                <td>4445</td>
+                <td>RePL Recycling plastic project</td>
+                <td>Inactive</td>
+                <td>Waste handling and disposal</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under validation" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>4381</td>
+                <td>WEST SERAM REDD+ and AGARWOOD ForestWise PROJECT</td>
+                <td>Under validation</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Rejected by Administrator" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>4186</td>
+                <td>REDUCING EMISSIONS FROM DEFORESTATION DUE TO SLASH-AND-BURN CORN BY INTRODUCING CACAO FARMING IN GORONTALO PROVINCE, INDONESIA</td>
+                <td>Rejected by Administrator</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Energy demand" data-country="Indonesia">
+                <td>4103</td>
+                <td>Water Purification System for Safe Drinking Water (SDW) in Indonesia</td>
+                <td>Registered</td>
+                <td>Energy demand</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Inactive" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>3587</td>
+                <td>KOPI LESTARI AGROFORESTRY AND LAND REHABILITATION WITH SMALLHOLDER FARMERS IN INDONESIA</td>
+                <td>Inactive</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under development" data-type="Energy demand" data-country="Indonesia">
+                <td>3327</td>
+                <td>Installation of high efficiency wood burning cookstoves in Indonesia 1</td>
+                <td>Under development</td>
+                <td>Energy demand</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under development" data-type="Energy demand" data-country="Indonesia">
+                <td>3328</td>
+                <td>Installation of high efficiency wood burning cookstoves in Indonesia 2</td>
+                <td>Under development</td>
+                <td>Energy demand</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Verification approval requested" data-type="Energy industries" data-country="Indonesia">
+                <td>3297</td>
+                <td>Hamparan biogas project</td>
+                <td>Verification approval requested</td>
+                <td>Energy industries (renewable/non-renewable sources); Waste handling and disposal</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under validation" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>3226</td>
+                <td>Padang Tikar Landscape</td>
+                <td>Under validation</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registration requested" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>3012</td>
+                <td>Agroforestry and Reforestation for Carbon Sequestration in Indonesia</td>
+                <td>Registration requested</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>2403</td>
+                <td>Agroforestry and Reforestation for Carbon Sequestration in Indonesia</td>
+                <td>Registered</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registration requested" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>2395</td>
+                <td>Agroforestry and Reforestation for Carbon Sequestration in Indonesia</td>
+                <td>Registration requested</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Energy industries" data-country="Indonesia">
+                <td>238</td>
+                <td>Mobuya Mini Hydro Power Plant 3 x 1000 kW North Sulawesi, Indonesia</td>
+                <td>Registered</td>
+                <td>Energy industries (renewable/non-renewable sources)</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Energy industries" data-country="Indonesia">
+                <td>243</td>
+                <td>55.5 MW Natural Gas Power Generation Project at Batu Aji Village, Riau Island, Indonesia, by PT Dalle Energy Batam</td>
+                <td>Registered</td>
+                <td>Energy industries (renewable/non-renewable sources)</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Fugitive emissions from fuels" data-country="Indonesia">
+                <td>409</td>
+                <td>MedcoEnergi Associated Gas Recovery and Utilization Project</td>
+                <td>Registered</td>
+                <td>Fugitive emissions from fuels (solid, oil and gas)</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>1899</td>
+                <td>Sumatra Merang Peatland Project (SMPP)</td>
+                <td>Registered</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Withdrawn" data-type="Energy industries" data-country="Indonesia">
+                <td>1778</td>
+                <td>Lahendong Unit 5 & Unit 6 Geothermal Project</td>
+                <td>Withdrawn</td>
+                <td>Energy industries (renewable/non-renewable sources)</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Units Transferred from Approved GHG Program" data-type="Metal production" data-country="Indonesia">
+                <td>1750</td>
+                <td>PFC Emission Reductions at PT. Indonesia Asahan Aluminium (PT. INALUM) Kuala Tanjung - CER Conversion</td>
+                <td>Units Transferred from Approved GHG Program</td>
+                <td>Metal production</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Energy industries" data-country="Indonesia">
+                <td>486</td>
+                <td>50 MW Sipansihaporas Hydro Power Plant, North Sumatra</td>
+                <td>Registered</td>
+                <td>Energy industries (renewable/non-renewable sources)</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Waste handling and disposal" data-country="Indonesia">
+                <td>866</td>
+                <td>METHANE RECOVERY IN WASTEWATER TREATMENT, PROJECT AIN07-W-05, SUMATERA UTARA, INDONESIA</td>
+                <td>Registered</td>
+                <td>Waste handling and disposal</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Energy industries" data-country="Indonesia">
+                <td>967</td>
+                <td>Bantargebang Landfill Gas Management & Power Generation</td>
+                <td>Registered</td>
+                <td>Energy industries (renewable/non-renewable sources); Waste handling and disposal</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Energy industries" data-country="Indonesia">
+                <td>488</td>
+                <td>82 MW Lau Renun Hydro Power Plant, North Sumatra</td>
+                <td>Registered</td>
+                <td>Energy industries (renewable/non-renewable sources); Waste handling and disposal</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Energy industries" data-country="Indonesia">
+                <td>487</td>
+                <td>210 MW Musi Hydro Power Plant, Bengkulu</td>
+                <td>Registered</td>
+                <td>Energy industries (renewable/non-renewable sources); Waste handling and disposal</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Energy industries" data-country="Indonesia">
+                <td>688</td>
+                <td>Wayang Windu Phase 2 Geothermal Power Project</td>
+                <td>Registered</td>
+                <td>Energy industries (renewable/non-renewable sources); Waste handling and disposal</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Energy industries" data-country="Indonesia">
+                <td>144</td>
+                <td>Capacity Upgrade of Gunung Salak Geothermal Power Plant Project, Indonesia</td>
+                <td>Registered</td>
+                <td>Energy industries (renewable/non-renewable sources); Waste handling and disposal</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Under validation" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>1498</td>
+                <td>Preserving Peat Swamp Forest Ecosystem Through Redd+ Activity In Kampar Peninsula Riau-Indonesia</td>
+                <td>Under validation</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>1493</td>
+                <td>Mangrove restoration and coastal greenbelt protection in the East coast of Aceh and North Sumatra Province, Indonesia</td>
+                <td>Registered</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>674</td>
+                <td>Rimba Raya Biodiversity Reserve Project</td>
+                <td>Registered</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
+                <td class="icon-container">
+                    <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
+                    <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
+                </td>
+            </tr>
+            <tr data-status="Registered" data-type="Agriculture Forestry and Other Land Use" data-country="Indonesia">
+                <td>1477</td>
+                <td>Katingan Peatland Restoration and Conservation Project</td>
+                <td>Registered</td>
+                <td>Agriculture Forestry and Other Land Use</td>
+                <td>Indonesia</td>
+                <td><a href="#" class="btn btn-info">VIEW</a></td>
                 <td class="icon-container">
                     <button class="btn btn-secondary" onclick="openCommentModal(this)"><i class="fas fa-comment"></i></button>
                     <div class="comment-section" data-comments='[{"username":"Alice","email":"alice@example.com","comment":"Great project!"},{"username":"Bob","email":"bob@example.com","comment":"Looking forward to updates!"}]'></div>
@@ -124,7 +1049,6 @@
             </tbody>
         </table>
     </div>
-
     <!-- Pagination Section -->
     <div class="d-flex justify-content-between align-items-center">
         <div>
